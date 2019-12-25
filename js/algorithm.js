@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [9,8,7,6,5,4,3,2,1];
+var data = [17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1];
 
 
 /**
@@ -44,6 +44,7 @@ function appendElement(canvas, data) {
 	 }
 	 else
 	 {
+	 	console.log(data)
 	 	console.log("Data Should be Array");
 	 }
 }
@@ -90,6 +91,16 @@ async function insersion_sort() {
 		
 }
 
+function swapOldarray(){
+	// swapping using Index
+}
+
+function merge_sort(data){
+	var oldArray = data.slice();
+	appendElement(canvas, data);
+	return merge_sort2(oldArray, 0);
+}
+
 
 /**
  * Merge Sort
@@ -98,7 +109,7 @@ async function insersion_sort() {
  * Average Case: nlogn
  * @return {void} 
  */
-function merge_sort(data){
+async function merge_sort2(data, base){
 	//Impliment Merge Sort
 	/**
 	 * Merge Sort Implimentation in Pseudo Code
@@ -124,12 +135,18 @@ function merge_sort(data){
 	var mid = Math.floor(data.length / 2)
 	var x = data.slice(0, mid);
 	var y = data.slice(mid);
+	var calc_base = base + mid;
+
+	var x_val = await merge_sort2(x, base);
+	var y_val = await merge_sort2(y, calc_base);
 	
-	return merge(merge_sort(x), merge_sort(y));
+	return merge(x_val, y_val, base, calc_base);
+	
+	
 
 }
 
-function merge(leftArray, rightArray){
+async function merge(leftArray, rightArray, base, calc_base){
 	// Merge Operation
 	// result = []
 	// leftArray, Right Array, leftindex, yindex
@@ -146,6 +163,7 @@ function merge(leftArray, rightArray){
 	// 				
 	var result = [];
 	var leftindex = 0, rightIndex = 0;
+	await sleep(1000);
 	while (leftindex < leftArray.length && rightIndex < rightArray.length){
 		if (leftArray[leftindex] <= rightArray[rightIndex]){
 			result.push(leftArray[leftindex])
@@ -159,9 +177,9 @@ function merge(leftArray, rightArray){
 	var remainy = rightArray.slice(rightIndex)
 	result.push(...remainx);
 	result.push(...remainy);
+	appendElement(canvas, result)
 	return result;
 }
 
 
-var sorted = merge_sort([9,8,7,6,5,4,3,2,1]);
-console.log(sorted);
+var sorted = merge_sort(data);
