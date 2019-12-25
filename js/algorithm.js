@@ -48,6 +48,10 @@ function appendElement(canvas, data) {
 	 }
 }
 
+/**
+ * Sleep Function To Delay in ms
+ * @param  {int} ms Millisecond
+ */
 function sleep(ms) {
 	return new Promise( resolve => setTimeout(resolve, ms));
 }
@@ -55,6 +59,13 @@ function sleep(ms) {
 appendElement(canvas, data);
 
 
+/**
+ * Insersion Sort
+ * Best case: n
+ * Average Case : n^2
+ * Wrost Case: n^2
+ * @return {void} 
+ */
 async function insersion_sort() {
 
 	var oldArray = data.slice();
@@ -79,7 +90,78 @@ async function insersion_sort() {
 		
 }
 
-insersion_sort();
+
+/**
+ * Merge Sort
+ * Best Case: nlogn
+ * Wrost Case:nlogn
+ * Average Case: nlogn
+ * @return {void} 
+ */
+function merge_sort(data){
+	//Impliment Merge Sort
+	/**
+	 * Merge Sort Implimentation in Pseudo Code
+	 * func merge_sort(Array a):
+	 		if(lengh of a <= 1):
+	 			Return a
+
+	 		mid = floorValue(length of a / 2)
+
+	 		x = a[0 to mid]
+	 		y = [mid + 1 to end]
+
+	 		merge(
+				merge_sort(x), merge_sort(y)
+	 		)
 
 
+	 * 		mid = [(length of a)/2] RoundUp
+	 * 		
+	 */
+	if(data.length <= 1) return data;
 
+	var mid = Math.floor(data.length / 2)
+	var x = data.slice(0, mid);
+	var y = data.slice(mid);
+	
+	return merge(merge_sort(x), merge_sort(y));
+
+}
+
+function merge(leftArray, rightArray){
+	// Merge Operation
+	// result = []
+	// leftArray, Right Array, leftindex, yindex
+	// while(leftindex < leftArray && rightindex < right index)
+	// 		if (leftArray[leftindex] <= right[yindex])
+	// 			Result.Push(leftarray[leftindex])
+	// 			leftindex ++;
+	// 		else:
+	// 			Result.push(rightarray[rightindex])
+	// 			yindex++
+	// endwhile
+	// Add Left of Array of Both 			
+	//
+	// 				
+	var result = [];
+	var leftindex = 0, rightIndex = 0;
+	while (leftindex < leftArray.length && rightIndex < rightArray.length){
+		if (leftArray[leftindex] <= rightArray[rightIndex]){
+			result.push(leftArray[leftindex])
+			leftindex++
+		}else{
+			result.push(rightArray[rightIndex]);
+			rightIndex++;
+		}
+	}
+	var remainx = leftArray.slice(leftindex)
+	var remainy = rightArray.slice(rightIndex)
+	result.push(...remainx);
+	result.push(...remainy);
+	return result;
+}
+
+
+var sorted = merge_sort([9,8,7,6,5,4,3,2,1]);
+console.log(sorted);
