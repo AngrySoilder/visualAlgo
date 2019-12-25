@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1];
+var data = [5,4,3,2,1];
 
 
 /**
@@ -182,4 +182,4 @@ async function merge(leftArray, rightArray, base, calc_base){
 }
 
 
-var sorted = merge_sort(data);
+var sorted = insersion_sort();
