@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [19,18,17,16,15,14,13,12,10,9,8,7,6,5,4,3,2,1];
+var data = [5,4,3,2,1];
 
 
 /**
@@ -316,4 +316,59 @@ async function bubble_sort(data)
 	}
 }
 
-bubble_sort(data);
+/**
+ * Cocktail Sort
+ * Analysis
+ * 	Best: n
+ * 	Wrost: n^2
+ * 	Average: n^2
+ */
+async function cocktail_sort(data){
+	// Cocktail Sort
+	let sorted = false;
+	while(!sorted)
+	{
+		sorted = true;
+		for (let i = 1; i < data.length; i++)
+		{
+			
+			if(data[i-1] > data[i])
+			{
+				let _storage = data[i];
+				data[i] = data[i-1];
+				data[i-1] = _storage;
+				sorted = false;
+			}
+			el_dict[i].children[0].style.backgroundColor = 'red';
+			el_dict[i-1].children[0].style.backgroundColor = 'red';
+			await sleep(500);
+			appendElement(canvas, data);
+			
+		}
+
+		if(sorted == true){
+			break;
+		}
+	
+	
+		for (let i = data.length-1; i >= 1; i--)
+		{	
+			console.log("we are hitting This");
+			
+			if(data[i-1] > data[i])
+			{
+				let _storage = data[i];
+				data[i] = data[i-1];
+				data[i-1] = _storage;
+				sorted = false;
+			}
+			el_dict[i].children[0].style.backgroundColor = 'red';
+			el_dict[i-1].children[0].style.backgroundColor = 'red';
+			await sleep(500);
+			appendElement(canvas, data);
+			
+		}
+	}
+}
+
+cocktail_sort(data)
