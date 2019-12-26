@@ -14,6 +14,13 @@
 
 ![](https://media.giphy.com/media/jpQDxVvJ3HX61Zdnjr/giphy.gif)
 
+**Heapsort**
+
+
+**Selection Sort**
+
+![](https://media.giphy.com/media/h1QIEfxmVmdOVUd3JP/giphy.gif)
+
 
 
 ## Note

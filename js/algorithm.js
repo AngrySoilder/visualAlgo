@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [9,8,7,6,5,4,3,2,1];
+var data = [19,18,17,16,15,14,13,12,10,9,8,7,6,5,4,3,2,1];
 
 
 /**
@@ -240,4 +240,47 @@ function swap(i, j){
 }
 
 
-quicksort(data, 0 , data.length - 1);
+/**
+ * Selection Sort Defination
+ * Analysis:
+ * 	Best: n^2
+ * 	Wrost: n^2
+ * 	Average: n^2
+ * 	
+ */
+async function selection_sort(data){
+
+	for(var i = 0; i < data.length ; i++){
+
+		var jmin = i;
+		el_dict[jmin].children[0].style.backgroundColor = 'green';
+		await sleep(500);
+
+		for(var j = i + 1; j < data.length; j ++)
+		{	
+			appendElement(canvas, data);
+			el_dict[j].children[0].style.backgroundColor = 'red';
+			el_dict[jmin].children[0].style.backgroundColor = 'green';
+			await sleep(500);
+			if(data[j] < data[jmin])
+			{
+				jmin = j;
+			}
+			appendElement(canvas, data)
+		}
+
+		if( jmin != i)
+		{
+			el_dict[jmin].children[0].style.backgroundColor = 'red';
+			el_dict[i].children[0].style.backgroundColor = 'green';
+			await sleep(500);
+			var _storage = data[jmin];
+			data[jmin] = data[i];
+			data[i] = _storage;
+		}
+		appendElement(canvas, data);	
+	}
+}
+
+selection_sort(data);
+console.log(data)
