@@ -181,5 +181,45 @@ async function merge(leftArray, rightArray, base, calc_base){
 	return result;
 }
 
+/**
+ * Quicksort Implimentation
+ * Analysis:
+ * 	Best:nlogn
+ * 	Average: nlogn
+ * 	Wrost: n^2
+ */
+function quicksort(data, low, high){
+	if(low < high){
+		var pivot = partition(data, low, high);
+		quicksort(data, low, pivot - 1);
+		quicksort(data, pivot + 1, high);
+	}
+}
 
-var sorted = insersion_sort();
+
+/**
+ * Helper Function for Paratation
+ */
+function partition(data, low, high) {
+	// Helper function for partition 
+	var pivot = data[high];
+	var i = low;
+	for (var j = low; j<= high; j++){
+		if(data[j] < pivot) {
+			swap(i, j);
+			i++;
+		}
+	}
+	swap(i, high);
+	return i;
+}
+
+
+function swap(i, j){
+	var _storage = data[i];
+	data[i] = data[j];
+	data[j] = _storage;
+}
+
+
+quicksort(data, 0 , data.length - 1);
