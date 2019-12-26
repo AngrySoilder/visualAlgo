@@ -282,5 +282,38 @@ async function selection_sort(data){
 	}
 }
 
-selection_sort(data);
-console.log(data)
+
+/**
+ * Bubble Sort
+ * Analysis
+ * 	Best: n
+ * 	Average: n^2
+ * 	Wrost: n^3
+ */
+async function bubble_sort(data)
+{
+	let sorted = false;
+	while(!sorted)
+	{
+		sorted = true;
+		for (let i = 1; i < data.length; i++)
+		{
+			
+			if(data[i-1] > data[i])
+			{
+				let _storage = data[i];
+				data[i] = data[i-1];
+				data[i-1] = _storage;
+				sorted = false;
+			}
+			el_dict[i].children[0].style.backgroundColor = 'red';
+			el_dict[i-1].children[0].style.backgroundColor = 'red';
+			await sleep(500);
+			appendElement(canvas, data);
+			
+		}
+
+	}
+}
+
+bubble_sort(data);
