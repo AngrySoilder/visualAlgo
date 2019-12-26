@@ -12,3 +12,10 @@
 
 **Quick Sort**
 ![](https://media.giphy.com/media/jpQDxVvJ3HX61Zdnjr/giphy.gif)
+
+
+
+## Note
+
+**Currently Developing**
+Currently You Need to change algorithm.js to visualize it.
