@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [5,4,3,2,1];
+var data = [9,8,7,6,5,4,3,2,1];
 
 
 /**
@@ -188,9 +188,9 @@ async function merge(leftArray, rightArray, base, calc_base){
  * 	Average: nlogn
  * 	Wrost: n^2
  */
-function quicksort(data, low, high){
+async function quicksort(data, low, high){
 	if(low < high){
-		var pivot = partition(data, low, high);
+		var pivot = await partition(data, low, high);
 		quicksort(data, low, pivot - 1);
 		quicksort(data, pivot + 1, high);
 	}
@@ -200,17 +200,35 @@ function quicksort(data, low, high){
 /**
  * Helper Function for Paratation
  */
-function partition(data, low, high) {
+async function partition(data, low, high) {
 	// Helper function for partition 
 	var pivot = data[high];
+	
 	var i = low;
-	for (var j = low; j<= high; j++){
+	for (var j = low; j< high; j++){
+		//await to show comparison and Green
+		await sleep(1000);
+		el_dict[high].children[0].style.backgroundColor = 'green';
+		el_dict[j].children[0].style.backgroundColor = 'red';
+		await sleep(1000);
+		appendElement(canvas, data);
 		if(data[j] < pivot) {
+			
+			el_dict[j].children[0].style.backgroundColor = 'red';
+			await sleep(1000);
 			swap(i, j);
 			i++;
+			appendElement(canvas, data);
 		}
 	}
+	await sleep(1000);
+	el_dict[i].children[0].style.backgroundColor = 'red';
+	el_dict[high].children[0].style.backgroundColor = 'green';
+	await sleep(1000)
 	swap(i, high);
+	appendElement(canvas, data);
+	await sleep(1000)
+
 	return i;
 }
 
