@@ -11,6 +11,7 @@
 ![](https://media.giphy.com/media/Zb6kF9TKKRujbyNZEC/giphy.gif)
 
 **Quick Sort**
+
 ![](https://media.giphy.com/media/jpQDxVvJ3HX61Zdnjr/giphy.gif)
 
 
