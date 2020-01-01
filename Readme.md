@@ -29,7 +29,15 @@
 ![](https://media.giphy.com/media/Q8yrFzP880uXKV9iEC/giphy.gif)
 
 
+# Searching Algorithms
 
+**Linear Search**
+
+![](https://media.giphy.com/media/RLtBHY7mEZZsYc9ky4/giphy.gif)
+
+**Binary Search**
+
+![](https://media.giphy.com/media/S7KunUv81o9Nq1xxbY/giphy.gif)
 
 ## Note
 
