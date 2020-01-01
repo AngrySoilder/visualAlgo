@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [22, 25, 65,33,45, 23, 12, 29];
+var data = [9,8,7,6,5,4,3,2,1];
 
 
 /**
@@ -59,7 +59,16 @@ function sleep(ms) {
 
 appendElement(canvas, data);
 
+/**
+  ____             _   _             
+ / ___|  ___  _ __| |_(_)_ __   __ _ 
+ \___ \ / _ \| '__| __| | '_ \ / _` |
+  ___) | (_) | |  | |_| | | | | (_| |
+ |____/ \___/|_|   \__|_|_| |_|\__, |
+                               |___/ 
+ */
 
+ 
 /**
  * Insersion Sort
  * Best case: n
@@ -424,3 +433,97 @@ async function od_even(data)
 	}
 }
 
+
+/**
+  ____                      _     _             
+ / ___|  ___  __ _ _ __ ___| |__ (_)_ __   __ _ 
+ \___ \ / _ \/ _` | '__/ __| '_ \| | '_ \ / _` |
+  ___) |  __| (_| | | | (__| | | | | | | | (_| |
+ |____/ \___|\__,_|_|  \___|_| |_|_|_| |_|\__, |
+                                          |___/ 
+*/
+
+/**
+ * Searching Linearly
+ * @param {array} data Random Data
+ * @param {int} search Element to search
+ */
+async function linear_search(data, search)
+{
+	
+	
+	appendElement(canvas, data);
+
+	for(let index = 0; index <= data.length - 1; index++)
+	{
+		el_dict[index].children[0].style.backgroundColor = 'red';
+		await sleep(500);
+		if (search == data[index])
+		{
+			el_dict[index].children[0].style.backgroundColor = 'green';
+			return index;
+		}
+		appendElement(canvas, data);
+	}
+	return false
+}
+
+/**
+ * Binary Search
+ * @param {array} data Array To find Data
+ * @param {int} search_element Searching Element
+ */
+async function binary_search(data, search_element)
+{
+	appendElement(canvas, data);
+	await sleep(500);
+	data = data.sort();
+	appendElement(canvas, data);
+
+	let indexStart = 0;
+	let indexEnd = data.length-1;
+
+	while(indexStart != indexEnd)
+	{
+		let mid = 
+		indexStart == 0 ? Math.floor(indexEnd/2)
+		: Math.floor((indexStart + data.length-1)/2);
+		console.log(mid);
+		
+		el_dict[mid].children[0].style.backgroundColor = 'purple';
+		await sleep(500);
+		if(search_element == data[mid])
+		{
+			el_dict[mid].children[0].style.backgroundColor = 'green';
+			return mid;
+		} 
+		
+		if(search_element < data[mid])
+		{	
+			for(let i = indexStart; i <= mid ; i++)
+			{
+				el_dict[i].children[0].style.backgroundColor = 'red';
+			}
+			indexEnd = mid;
+		}else
+		{	
+			for(let i = mid; i <= indexEnd ; i++)
+			{
+				el_dict[i].children[0].style.backgroundColor = 'red';
+			}
+			indexStart = mid;
+		}
+		await sleep(500);
+		appendElement(canvas, data);
+	}
+
+	if(search_element = data[indexEnd])
+	{
+
+		el_dict[indexEnd].children[0].style.backgroundColor = 'red';
+		await sleep(500);
+		appendElement(canvas, data);
+		return indexEnd;
+	}
+	return false;
+}
