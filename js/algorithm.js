@@ -1,6 +1,6 @@
 var canvas = document.getElementById('canvas');
 var el_dict = [];
-var data = [5,4,3,2,1];
+var data = [22, 25, 65,33,45, 23, 12, 29];
 
 
 /**
@@ -371,4 +371,56 @@ async function cocktail_sort(data){
 	}
 }
 
-cocktail_sort(data)
+/**
+ * Odd Even Sorting
+ * Analysis: 
+ * 	Best Case: n
+ * 	Wrost Case: n^2
+ * 	Average Case: n^2 
+ */
+async function od_even(data)
+{
+	let sorted = false;
+	while(!sorted)
+	{
+		sorted = true;
+		for (let i = 1; i < data.length; i= i+2)
+		{
+			
+			if(data[i-1] > data[i])
+			{
+				let _storage = data[i];
+				data[i] = data[i-1];
+				data[i-1] = _storage;
+				sorted = false;
+			}
+			el_dict[i].children[0].style.backgroundColor = 'red';
+			el_dict[i-1].children[0].style.backgroundColor = 'red';
+			await sleep(1000);
+			appendElement(canvas, data);
+			
+		}
+
+		if(sorted == true){
+			break;
+		}
+	
+	
+		for (let i = 0;  i <= data.length; i = i + 2)
+		{	
+			
+			if(data[i-1] > data[i])
+			{
+				let _storage = data[i];
+				data[i] = data[i-1];
+				data[i-1] = _storage;
+				sorted = false;
+				el_dict[i].children[0].style.backgroundColor = 'red';
+				el_dict[i-1].children[0].style.backgroundColor = 'red';
+				await sleep(1000);
+			}
+			appendElement(canvas, data);
+		}
+	}
+}
+
