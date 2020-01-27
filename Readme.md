@@ -42,4 +42,4 @@
 ## Note
 
 **Currently Developing**
-Currently You Need to change algorithm.js to visualize it.
+Since This is Education Kind of Thing My Interest Rate is Very Lower
