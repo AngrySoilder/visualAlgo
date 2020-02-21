@@ -1,3 +1,5 @@
+![](./assets/img.png)
+
 # Sorting Algorithms
 
 **Insersion Sort**
@@ -16,16 +18,13 @@
 
 ![](https://media.giphy.com/media/h1QIEfxmVmdOVUd3JP/giphy.gif)
 
-
 **Bubble Sort**
 
 ![](https://media.giphy.com/media/gFstrcVEP6Wee9f2om/giphy.gif)
 
-
 **Cocktail Sort**
 
 ![](https://media.giphy.com/media/Q8yrFzP880uXKV9iEC/giphy.gif)
-
 
 # Searching Algorithms
 
