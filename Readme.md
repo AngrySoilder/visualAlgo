@@ -1,5 +1,3 @@
-## Trying to visualize my Algorithms
-
 # Sorting Algorithms
 
 **Insersion Sort**
@@ -38,8 +36,3 @@
 **Binary Search**
 
 ![](https://media.giphy.com/media/S7KunUv81o9Nq1xxbY/giphy.gif)
-
-## Note
-
-**Currently Developing**
-Since This is Education Kind of Thing My Interest Rate is Very Lower
